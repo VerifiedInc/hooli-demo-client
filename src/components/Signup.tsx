@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { CredentialRequest } from '@unumid/types';
 import { DemoNoPresentationDto, DemoPresentationDto, DemoPresentationRequestCreateOptions } from '@unumid/demo-types';
-import VerifierWidget from '@unumid/web-sdk';
+import UnumIDWidget from '@unumid/web-sdk';
 
 import { config } from '../config';
 
@@ -31,7 +31,7 @@ const Signup: FC = () => {
   const { session } = useTypedSelector(state => state.session);
   const { request } = useTypedSelector(state => state.presentationRequest);
 
-  useEffect(() => {
+  const actuallyCreatePresentationRequest = () => {
     if (!session) return;
 
     // customize these values for the specific demo (or not)
@@ -47,6 +47,10 @@ const Signup: FC = () => {
     };
 
     createPresentationRequest(presentationRequestOptions);
+  };
+
+  useEffect(() => {
+    actuallyCreatePresentationRequest();
   }, [session]);
 
   useEffect(() => {
@@ -88,9 +92,12 @@ const Signup: FC = () => {
           {/* customize these headers with branding for the specific demo, or remove it entirely */}
           <h2>Instant sign up! <LightFont>(takes 10 seconds)</LightFont></h2>
           <h3>Instantly sign up for (Verifier) using your verified ACME account.</h3>
-          <VerifierWidget
+          <UnumIDWidget
+            env={config.env}
+            apiKey={config.webSdkApiKey}
             presentationRequest={request?.presentationRequestPostDto}
-            applicationTitle='ACME'
+            createPresentationRequest={actuallyCreatePresentationRequest}
+            createInitialPresentationRequest={false}
           />
 
           {/* hardcode the rest of the screen with an image */}
