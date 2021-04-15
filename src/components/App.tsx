@@ -27,10 +27,7 @@ const App: FC = () => {
           <AltHeader />
           <Signup />
         </Route>
-        <Route path='/route1'>
-          <PrimaryHeader />
-        </Route>
-        <Route path='/authenticated'>
+        <Route path='/hello'>
           <PrimaryHeader />
           <Authenticated />
         </Route>

@@ -12,3 +12,9 @@
 .header-center.mobile img {
   height: 40px;
 }
+
+@media (max-width: 1224px) {
+  .header-center img {
+    height: 40px;
+  }
+}
