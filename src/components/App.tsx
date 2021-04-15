@@ -5,6 +5,7 @@ import { useActionCreators } from '../hooks/useActionCreators';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import Authenticated from './Authenticated';
 import Declined from './Declined';
+import Account from './Account';
 
 import AltHeader from './Header/AltHeader';
 import PrimaryHeader from './Header/PrimaryHeader';
@@ -30,6 +31,10 @@ const App: FC = () => {
         <Route path='/hello'>
           <PrimaryHeader />
           <Authenticated />
+        </Route>
+        <Route path='/account'>
+          <PrimaryHeader />
+          <Account />
         </Route>
         <Route path='/declined'>
           <AltHeader />
