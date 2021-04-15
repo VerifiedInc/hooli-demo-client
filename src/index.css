@@ -5,7 +5,6 @@
   --secondary-text-color: #ffffff;
 }
 
-
 html {
   box-sizing: border-box;
 }
@@ -18,6 +17,8 @@ html {
 
 body {
   margin: 0;
+  font-family: 'InterstateCondensed';
+  font-weight: 400;
 }
 
 h1 {
@@ -52,4 +53,32 @@ h3 {
     font-size: 30px;
     font-weight: 700;
   }
+}
+
+@font-face {
+  font-family: 'InterstateCondensed';
+  src: local('InterstateCondensed'),
+    url(./assets/fonts/Interstate\ Condensed\ Regular.otf) format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'InterstateCondensed';
+  src: local('InterstateBold'),
+    url(./assets/fonts/interstate-bold-cond-58b64162258ca.otf) format('opentype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'InterstateCondensed';
+  src: local('InterstateLight'),
+    url(./assets/fonts/interstate-light-cond-58b64220b1490.otf) format('opentype');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'InterstateCondensed';
+  src: local('InterstateBlack'),
+    url(./assets/fonts/interstate-black-cond-58b642507872b.otf) format('opentype');
+  font-weight: 900;
 }
