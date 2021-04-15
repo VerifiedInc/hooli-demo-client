@@ -6,17 +6,18 @@ import AltHeader from '../../../components/Header/AltHeader';
 describe('AltHeader', () => {
   it('renders a header with a classname of alternate-header', () => {
     render(<AltHeader />, { wrapper: MemoryRouter });
-    expect(screen.getByText('Link 1').closest('header')).toHaveClass('alternate-header');
+    expect(screen.getByText('HOME').closest('header')).toHaveClass('alternate-header');
   });
 
-  it('renders two links', () => {
+  it('renders three links', () => {
     render(<AltHeader />, { wrapper: MemoryRouter });
-    expect(screen.getByText('Link 1')).toBeInTheDocument();
-    expect(screen.getByText('Link 2')).toBeInTheDocument();
+    expect(screen.getByText('HOME')).toBeInTheDocument();
+    expect(screen.getByText('ABOUT GAVIN')).toBeInTheDocument();
+    expect(screen.getByText('HOOLI-CON')).toBeInTheDocument();
   });
 
   it('renders a right side tab', () => {
     render(<AltHeader />, { wrapper: MemoryRouter });
-    expect(screen.getByText('Right side tab')).toBeInTheDocument();
+    expect(screen.getByText('Making the world a better place.')).toBeInTheDocument();
   });
 });

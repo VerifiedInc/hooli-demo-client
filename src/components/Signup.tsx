@@ -71,7 +71,7 @@ const Signup: FC = () => {
         handlePresentationShared(data);
 
         // customize this route for the specific demo if you want
-        history.push('/authenticated');
+        history.push('/hello');
       } else {
         handleNoPresentationShared(data);
 

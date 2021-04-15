@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 
-import Authenticated from '../../components/Authenticated';
+import Account from '../../components/Account';
 import { store } from '../../state';
 import { PresentationActionType } from '../../state/actionTypes/presentation';
 import { dummyDemoPresentationDto } from '../mocks';
@@ -11,14 +11,14 @@ describe('Authenticated component', () => {
   const component = (
     <Provider store={store} >
       <MemoryRouter>
-        <Authenticated />
+        <Account />
       </MemoryRouter>
     </Provider>
   );
 
   it('redirects if there is no Presentation in state', async () => {
     render(component);
-    expect(screen.queryByAltText('Hello, Richard!')).not.toBeInTheDocument();
+    expect(screen.queryByAltText('Your Hooli Account')).not.toBeInTheDocument();
   });
 
   it('displays a dummy image if there is a presentation in state', () => {
@@ -28,6 +28,6 @@ describe('Authenticated component', () => {
     });
 
     render(component);
-    expect(screen.getByAltText('Hello, Richard!')).toBeInTheDocument();
+    expect(screen.getByAltText('Your Hooli Account')).toBeInTheDocument();
   });
 });

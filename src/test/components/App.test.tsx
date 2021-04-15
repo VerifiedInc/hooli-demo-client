@@ -32,19 +32,6 @@ describe('app', () => {
   });
 
   it('shows the signup page by default', async () => {
-    expect(await screen.findByText('Welcome to (Verifier)!')).toBeInTheDocument();
-  });
-
-  it('shows a primary header with a logout tab at /route1', async () => {
-    const link1 = screen.getByText('Link 1');
-    userEvent.click(link1);
-
-    const logoutTab = screen.getByText('LOGOUT');
-    expect(logoutTab).toBeInTheDocument();
-
-    userEvent.click(logoutTab);
-
-    expect(logoutTab).not.toBeInTheDocument();
-    expect(await screen.findByText('Welcome to (Verifier)!')).toBeInTheDocument();
+    expect(await screen.findByText('Welcome to Hooli!')).toBeInTheDocument();
   });
 });

@@ -8,13 +8,13 @@ describe('PrimaryHeader', () => {
   const component = <Provider store={store}><MemoryRouter><PrimaryHeader /></MemoryRouter></Provider>;
   it('renders a header with a classname of primary-header', () => {
     render(component);
-    expect(screen.getByText('Link 1').closest('header')).toHaveClass('primary-header');
+    expect(screen.getByText('ACCOUNT').closest('header')).toHaveClass('primary-header');
   });
 
   it('renders two links', () => {
     render(component);
-    expect(screen.getByText('Link 1')).toBeInTheDocument();
-    expect(screen.getByText('Link 2')).toBeInTheDocument();
+    expect(screen.getByText('RICHARD HENDRICKS', { exact: false })).toBeInTheDocument();
+    expect(screen.getByText('ACCOUNT')).toBeInTheDocument();
   });
 
   it('renders a Logout tab', () => {
@@ -24,6 +24,6 @@ describe('PrimaryHeader', () => {
 
   it('renders a right side tab', () => {
     render(component);
-    expect(screen.getByText('Right side tab')).toBeInTheDocument();
+    expect(screen.getByText('Making the world a better place.')).toBeInTheDocument();
   });
 });

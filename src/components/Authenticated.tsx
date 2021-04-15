@@ -22,7 +22,7 @@ const Authenticated: FC = () => {
     <div className='authenticated'>
       <MainContent>
         {/* customize this with branding for the specific demo, better styling/layout/content, etc */}
-        <img src={image} />
+        <img src={image} alt='Hello, Richard!' />
       </MainContent>
     </div>
   );

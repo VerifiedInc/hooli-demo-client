@@ -22,7 +22,7 @@ const Account: FC = () => {
     <div className='account'>
       <MainContent>
         {/* customize this with branding for the specific demo, better styling/layout/content, etc */}
-        <img src={image} />
+        <img src={image} alt='Your Hooli Account' />
       </MainContent>
     </div>
   );

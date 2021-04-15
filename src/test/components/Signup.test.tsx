@@ -33,11 +33,11 @@ describe('signup', () => {
   });
 
   it('displays a welcome header', async () => {
-    expect(await screen.findByText('Welcome to (Verifier)!')).toBeInTheDocument();
+    expect(await screen.findByText('Welcome to Hooli!')).toBeInTheDocument();
   });
 
   it('creates a presentationRequest', async () => {
-    await screen.findByText('Welcome to (Verifier)!');
+    await screen.findByText('Welcome to Hooli!');
     expect(mockPresentationRequestCreate).toBeCalled();
   });
 
