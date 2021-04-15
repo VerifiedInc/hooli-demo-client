@@ -18,3 +18,5 @@ export const config: Config = {
   env: REACT_APP_ENV,
   webSdkApiKey: REACT_APP_WEB_SDK_API_KEY
 };
+
+console.log('config', config);
