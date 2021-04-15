@@ -11,10 +11,13 @@ import { useTypedSelector } from '../hooks/useTypedSelector';
 
 import MainContent from './Layout/MainContent';
 import ContentBox from './Layout/ContentBox';
-// import HorizontalDivider from './Layout/HorizontalDivider';
+import HorizontalDivider from './Layout/HorizontalDivider';
 import LightFont from './Layout/LightFont';
 
 import './Signup.css';
+import desktopImage from '../assets/signup-desktop.png';
+import mobileImage from '../assets/signup-mobile.png';
+import { useIsMobile } from '../hooks/useIsMobile';
 import { client } from '../feathers';
 
 const isDemoPresentationDto = (obj: DemoPresentationDto | DemoNoPresentationDto): obj is DemoPresentationDto =>
@@ -31,6 +34,7 @@ const Signup: FC = () => {
   const { session } = useTypedSelector(state => state.session);
   const { request } = useTypedSelector(state => state.presentationRequest);
 
+  const isMobile = useIsMobile();
   const actuallyCreatePresentationRequest = () => {
     if (!session) return;
 
@@ -82,16 +86,18 @@ const Signup: FC = () => {
 
   if (!session) return null;
 
+  const image = isMobile ? mobileImage : desktopImage;
+
   return (
     <div className='signup'>
       <MainContent>
         {/* customize these headers with branding for the specific demo, or remove them entirely */}
-        <h1>Welcome to (Verifier)!</h1>
+        <h1>Welcome to Hooli!</h1>
         <h2>Choose one of the options below to create an account.</h2>
         <ContentBox>
           {/* customize these headers with branding for the specific demo, or remove it entirely */}
           <h2>Instant sign up! <LightFont>(takes 10 seconds)</LightFont></h2>
-          <h3>Instantly sign up for (Verifier) using your verified ACME account.</h3>
+          <h3>Instantly sign up for Hooli using your verified ACME account.</h3>
           <UnumIDWidget
             env={config.env}
             apiKey={config.webSdkApiKey}
@@ -101,8 +107,8 @@ const Signup: FC = () => {
           />
 
           {/* hardcode the rest of the screen with an image */}
-          {/* <HorizontalDivider /> */}
-          {/* <img src={image} /> */}
+          <HorizontalDivider />
+          <img src={image} />
         </ContentBox>
       </MainContent>
 

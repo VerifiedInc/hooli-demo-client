@@ -3,3 +3,7 @@
   color: var(--secondary-text-color);
   min-height: 100vh;
 }
+
+.signup img {
+  width: 100%;
+}

@@ -39,6 +39,7 @@ h2 {
 h3 {
   font-weight: 300;
   font-size: 24px;
+  margin-bottom: 0;
 }
 
 @media (max-width: 1224px) {
