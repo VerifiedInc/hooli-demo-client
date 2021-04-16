@@ -40,7 +40,7 @@ const Signup: FC = () => {
 
     // customize these values for the specific demo (or not)
     const credentialRequests: CredentialRequest[] = [{
-      type: 'DemoCredential',
+      type: 'KYCCredential',
       required: true,
       issuers: [config.issuerDid]
     }];
