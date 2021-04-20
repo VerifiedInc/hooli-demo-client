@@ -63,7 +63,7 @@ const Signup: FC = () => {
     }
 
     // now that we've created the request, listen for a presentation
-    const presentationService = client.service('presentation');
+    const presentationService = client.service('presentationWebsocket');
     presentationService.on('created', (data: DemoPresentationDto | DemoNoPresentationDto) => {
       console.log('on presentation created, data', data);
 
