@@ -26,7 +26,7 @@ describe('signup', () => {
     when(client.service as unknown as jest.Mock)
       .calledWith('session').mockReturnValue({ create: mockSessionCreate })
       .calledWith('presentationRequest').mockReturnValue({ create: mockPresentationRequestCreate })
-      .calledWith('presentation').mockReturnValue({ on: mockOn, removeAllListeners: jest.fn() });
+      .calledWith('presentationWebsocket').mockReturnValue({ on: mockOn, removeAllListeners: jest.fn() });
 
     createSession()(store.dispatch);
     render(<Provider store={store}><Signup /></Provider>);
