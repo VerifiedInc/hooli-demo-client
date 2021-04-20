@@ -49,7 +49,7 @@ jobs:
         default: "https://hooli-api-new.demo.dev-unum.id"
       issuer_did:
         type: string
-        default: "did:unum:d620f77a-b454-4294-a6db-47af171897a6"
+        default: "did:unum:6ff79cd5-3088-4d69-82b4-4e0b7bbcf3b2"
 
     steps:
       - checkout
