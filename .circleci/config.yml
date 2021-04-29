@@ -46,7 +46,7 @@ jobs:
         default: 'development'
       server_url:
         type: string
-        default: "https://hooli-api-new.demo.dev-unum.id"
+        default: "https://hooli-api.demo.dev-unum.id"
       issuer_did:
         type: string
         default: "did:unum:6ff79cd5-3088-4d69-82b4-4e0b7bbcf3b2"
