@@ -94,7 +94,7 @@ const Signup: FC = () => {
       if (isDeprecatedDemoPresentationDto(data)) {
         handleDeprecatedPresentationShared(data);
 
-        history.push('/authenticated');
+        history.push('/hello');
       }
 
       // handle deprecated noPresentation
