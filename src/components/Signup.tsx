@@ -1,8 +1,8 @@
 import { FC, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { CredentialRequest } from '@unumid/types';
-import { DemoNoPresentationDto, DemoPresentationDto, DemoPresentationRequestCreateOptions } from '@unumid/demo-types';
 import UnumIDWidget from '@unumid/react-web-sdk';
+import { DemoPresentationRequestCreateOptions } from '@unumid/demo-types';
 
 import { config } from '../config';
 
@@ -19,15 +19,23 @@ import desktopImage from '../assets/signup-desktop.png';
 import mobileImage from '../assets/signup-mobile.png';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { client } from '../feathers';
+import {
+  isDemoAcceptedPresentationDto,
+  isDemoDeclinedPresentationDto,
+  isDemoPresentationDto,
+  isDeprecatedDemoNoPresentationDto,
+  isDeprecatedDemoPresentationDto
+} from '../typeguards';
 
-const isDemoPresentationDto = (obj: DemoPresentationDto | DemoNoPresentationDto): obj is DemoPresentationDto =>
-  !!(obj as DemoPresentationDto).presentation;
+import { DemoPresentationLikeDto } from '../types';
 
 const Signup: FC = () => {
   const {
     createPresentationRequest,
-    handlePresentationShared,
-    handleNoPresentationShared
+    handleDeprecatedPresentationShared,
+    handleDeprecatedNoPresentationShared,
+    handleAcceptedPresentationShared,
+    handleDeclinedPresentationShared
   } = useActionCreators();
 
   const history = useHistory();
@@ -64,16 +72,34 @@ const Signup: FC = () => {
 
     // now that we've created the request, listen for a presentation
     const presentationService = client.service('presentationWebsocket');
-    presentationService.on('created', (data: DemoPresentationDto | DemoNoPresentationDto) => {
+    presentationService.on('created', (data: DemoPresentationLikeDto) => {
       console.log('on presentation created, data', data);
 
+      // handle current cases
       if (isDemoPresentationDto(data)) {
-        handlePresentationShared(data);
+        // handle accepted
+        if (isDemoAcceptedPresentationDto(data)) {
+          handleAcceptedPresentationShared(data);
 
-        // customize this route for the specific demo if you want
-        history.push('/hello');
-      } else {
-        handleNoPresentationShared(data);
+          history.push('/authenticated');
+        }
+
+        // handle declined
+        if (isDemoDeclinedPresentationDto(data)) {
+          handleDeclinedPresentationShared(data);
+        }
+      }
+
+      // handle deprecated presentation
+      if (isDeprecatedDemoPresentationDto(data)) {
+        handleDeprecatedPresentationShared(data);
+
+        history.push('/authenticated');
+      }
+
+      // handle deprecated noPresentation
+      if (isDeprecatedDemoNoPresentationDto(data)) {
+        handleDeprecatedNoPresentationShared(data);
 
         history.push('/declined');
       }
