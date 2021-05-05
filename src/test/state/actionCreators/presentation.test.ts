@@ -1,21 +1,21 @@
 import { GeneralError } from '@feathersjs/errors';
 
 import {
-  handlePresentationShared,
-  handleNoPresentationShared,
+  handleDeprecatedPresentationShared,
+  handleDeprecatedNoPresentationShared,
   handlePresentationSharedError,
   resetPresentationState
 } from '../../../state/actionCreators/presentation';
 import { PresentationActionType } from '../../../state/actionTypes/presentation';
-import { dummyDemoPresentationDto, dummyDemoNoPresentationDto } from '../../mocks';
+import { dummyDeprecatedDemoPresentationDto, dummyDeprecatedDemoNoPresentationDto } from '../../mocks';
 
 describe('presentation action creators', () => {
   describe('handlePresentationShared', () => {
     it('returns a PresentationSharedSuccessAction', () => {
-      const action = handlePresentationShared(dummyDemoPresentationDto);
+      const action = handleDeprecatedPresentationShared(dummyDeprecatedDemoPresentationDto);
       const expected = {
         type: PresentationActionType.PRESENTATION_SHARED_SUCCESS,
-        payload: dummyDemoPresentationDto
+        payload: dummyDeprecatedDemoPresentationDto
       };
       expect(action).toEqual(expected);
     });
@@ -23,10 +23,10 @@ describe('presentation action creators', () => {
 
   describe('handleNoPresentationShared', () => {
     it('returns a NoPresentationSharedSuccessAction', () => {
-      const action = handleNoPresentationShared(dummyDemoNoPresentationDto);
+      const action = handleDeprecatedNoPresentationShared(dummyDeprecatedDemoNoPresentationDto);
       const expected = {
         type: PresentationActionType.NOPRESENTATION_SHARED_SUCCESS,
-        payload: dummyDemoNoPresentationDto
+        payload: dummyDeprecatedDemoNoPresentationDto
       };
       expect(action).toEqual(expected);
     });

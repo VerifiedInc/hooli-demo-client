@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import Authenticated from '../../components/Authenticated';
 import { store } from '../../state';
 import { PresentationActionType } from '../../state/actionTypes/presentation';
-import { dummyDemoPresentationDto } from '../mocks';
+import { dummyDeprecatedDemoPresentationDto } from '../mocks';
 
 describe('Authenticated component', () => {
   const component = (
@@ -24,7 +24,7 @@ describe('Authenticated component', () => {
   it('displays a dummy image if there is a presentation in state', () => {
     store.dispatch({
       type: PresentationActionType.PRESENTATION_SHARED_SUCCESS,
-      payload: dummyDemoPresentationDto
+      payload: dummyDeprecatedDemoPresentationDto
     });
 
     render(component);
