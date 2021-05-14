@@ -1,3 +1,22 @@
 .authenticated {
   background-color: var(--secondary-background-color);
 }
+
+.authenticated .hello {
+  font-size: 80px;
+  font-weight: 900;
+  text-align: left;
+  padding-left: 70px;
+  margin-top: 50px;
+  margin-bottom: 15px
+}
+
+@media screen and (max-width: 1200px) {
+  .authenticated .hello {
+    text-align: center;
+    padding-left: 0;
+    font-size: 40px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+}

@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import Authenticated from '../../components/Authenticated';
 import { store } from '../../state';
 import { PresentationActionType } from '../../state/actionTypes/presentation';
-import { dummyDeprecatedDemoPresentationDto } from '../mocks';
+import { dummyDemoAcceptedPresentationDto, dummyDeprecatedDemoPresentationDto } from '../mocks';
 
 describe('Authenticated component', () => {
   const component = (
@@ -29,5 +29,17 @@ describe('Authenticated component', () => {
 
     render(component);
     expect(screen.getByAltText('Hello, Richard!')).toBeInTheDocument();
+  });
+
+  it('displays the user\'s first name from the credential', () => {
+    store.dispatch({
+      type: PresentationActionType.PRESENTATION_SHARED_SUCCESS,
+      payload: dummyDemoAcceptedPresentationDto
+    });
+
+    const { firstName } = JSON.parse(dummyDemoAcceptedPresentationDto.presentation.verifiableCredential[0].credentialSubject);
+
+    render(component);
+    expect(screen.getByText(`Hello, ${firstName}!`)).toBeInTheDocument();
   });
 });

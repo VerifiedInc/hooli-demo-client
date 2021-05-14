@@ -224,7 +224,7 @@ export const dummyAcceptedPresentation: AcceptedPresentation = {
         id: 'https://api.dev-unumid.org//credentialStatus/808befa8-cb80-41f2-a092-3a2542bde1a0',
         type: 'CredentialStatus'
       },
-      credentialSubject: '{"id":"did:unum:ab8cc239-c146-4d9d-8332-ac8182f94696","isAuthorized":true,"userUuid":"eef4db1a-1310-4a60-9ef8-9ee5fc32fe8a","userEmail":"jacob@unum.id"}',
+      credentialSubject: '{"firstName": "Gizmo" }',
       issuanceDate: new Date('2021-03-11T01:57:20.185Z'),
       proof: {
         created: '2021-03-11T01:57:20.187Z',
