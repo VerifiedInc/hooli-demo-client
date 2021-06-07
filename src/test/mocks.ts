@@ -6,12 +6,12 @@ import {
 import {
   DemoPresentationDto as DeprecatedDemoPresentationDto,
   DemoNoPresentationDto as DeprecatedDemoNoPresentationDto
-} from '@unumid/demo-types-deprecated';
+} from '@unumid/demo-types-deprecated-v1';
 import { PresentationRequestPostDto } from '@unumid/types';
 import {
   Presentation as DeprecatedPresentation,
   NoPresentation as DeprecatedNoPresentation
-} from '@unumid/types-deprecated';
+} from '@unumid/types-deprecated-v1';
 import { v4 } from 'uuid';
 
 import {
@@ -40,7 +40,7 @@ export const dummyDemoPresentationRequestCreateOptions: DemoPresentationRequestC
     type: 'TestCredential',
     issuers: [dummyIssuerDid]
   }],
-  metadata: { sessionUuid: v4() }
+  metadata: { fields: { sessionUuid: v4() } }
 };
 
 export const dummyHolderAppInfo = {

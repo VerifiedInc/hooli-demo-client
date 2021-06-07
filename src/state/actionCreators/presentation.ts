@@ -2,7 +2,7 @@ import { FeathersError } from '@feathersjs/errors';
 import {
   DemoPresentationDto as DeprecatedDemoPresentationDto,
   DemoNoPresentationDto as DeprecatedDemoNoPresentationDto
-} from '@unumid/demo-types-deprecated';
+} from '@unumid/demo-types-deprecated-v1';
 import { DemoAcceptedPresentationDto, DemoDeclinedPresentationDto } from '../../types';
 
 import {
