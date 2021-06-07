@@ -6,12 +6,12 @@ import {
 import {
   DemoPresentationDto as DeprecatedDemoPresentationDto,
   DemoNoPresentationDto as DeprecatedDemoNoPresentationDto
-} from '@unumid/demo-types-deprecated';
+} from '@unumid/demo-types-deprecated-v1';
 import { PresentationRequestPostDto } from '@unumid/types';
 import {
   Presentation as DeprecatedPresentation,
   NoPresentation as DeprecatedNoPresentation
-} from '@unumid/types-deprecated';
+} from '@unumid/types-deprecated-v1';
 import { v4 } from 'uuid';
 
 import {
@@ -24,6 +24,7 @@ import {
 const now = new Date();
 const tenMinutesFromNow = new Date(now.getTime() + 10 * 60 * 1000);
 const dummyPresentationRequestUuid = v4();
+const dummyPresentationRequestId = v4();
 const dummyVerifierDid = `did:unum:${v4()}`;
 const dummyVerifierDidWithFragment = `${dummyVerifierDid}#${v4()}`;
 const dummyIssuerDid = `did:unum:${v4()}`;
@@ -38,9 +39,10 @@ export const dummySession: DemoSession = {
 export const dummyDemoPresentationRequestCreateOptions: DemoPresentationRequestCreateOptions = {
   credentialRequests: [{
     type: 'TestCredential',
-    issuers: [dummyIssuerDid]
+    issuers: [dummyIssuerDid],
+    required: true
   }],
-  metadata: { sessionUuid: v4() }
+  metadata: { fields: { sessionUuid: v4() } }
 };
 
 export const dummyHolderAppInfo = {
@@ -52,13 +54,15 @@ export const dummyHolderAppInfo = {
 export const dummyPresentationRequestPostDto: PresentationRequestPostDto = {
   presentationRequest: {
     uuid: dummyPresentationRequestUuid,
+    id: dummyPresentationRequestId,
     createdAt: now,
     updatedAt: now,
     expiresAt: tenMinutesFromNow,
     verifier: dummyVerifierDid,
     credentialRequests: [{
       type: 'TestCredential',
-      issuers: [dummyIssuerDid]
+      issuers: [dummyIssuerDid],
+      required: true
     }],
     proof: {
       created: now.toISOString(),

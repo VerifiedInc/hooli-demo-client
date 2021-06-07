@@ -55,7 +55,7 @@ const Signup: FC = () => {
 
     const presentationRequestOptions: DemoPresentationRequestCreateOptions = {
       credentialRequests,
-      metadata: { sessionUuid: session.uuid }
+      metadata: { fields: { sessionUuid: session.uuid } }
     };
 
     createPresentationRequest(presentationRequestOptions);
