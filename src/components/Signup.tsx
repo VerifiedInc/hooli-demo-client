@@ -81,12 +81,14 @@ const Signup: FC = () => {
         if (isDemoAcceptedPresentationDto(data)) {
           handleAcceptedPresentationShared(data);
 
-          history.push('/authenticated');
+          history.push('/hello');
         }
 
         // handle declined
         if (isDemoDeclinedPresentationDto(data)) {
           handleDeclinedPresentationShared(data);
+
+          history.push('/declined');
         }
       }
 
