@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { CredentialRequest } from '@unumid/types';
-import UnumIDWidget from '@unumid/react-web-sdk';
+import UnumIDWidget from '@unumid/web-sdk-react';
 import { DemoPresentationRequestCreateOptions } from '@unumid/demo-types';
 
 import { config } from '../config';
