@@ -1,3 +1,8 @@
+# Hooli Demo Client
+> This project acts as a fronted for a fictional customer, Hooli, which uses Unum ID its [Verifiy with X](https://www.unum.id/solutions/verify-with-x) capabilities - receiving and verifying credentials for instant onboarding.
+
+Information about the Unum ID demo ecosystem can be found in our [documentation](https://docs.unum.id/#demos).
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -44,3 +49,10 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Release Instructions
+### Dev
+Just merging changes to `main` will trigger automated deployments to dev.
+
+### Sandbox
+To release version of this project to sandbox push a tag with a preceding `v`. This will trigger an automated deployment to sandbox.
