@@ -10,6 +10,7 @@ import Account from './Account';
 import AltHeader from './Header/AltHeader';
 import PrimaryHeader from './Header/PrimaryHeader';
 import Signup from './Signup';
+import Footer from './Layout/Footer';
 
 const App: FC = () => {
   const { createSession } = useActionCreators();
@@ -41,6 +42,7 @@ const App: FC = () => {
           <Declined />
         </Route>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 };
