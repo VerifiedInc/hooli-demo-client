@@ -9,7 +9,7 @@ import { dummyDemoAcceptedPresentationDto, dummyDeprecatedDemoPresentationDto } 
 
 describe('Authenticated component', () => {
   const component = (
-    <Provider store={store} >
+    <Provider store={store}>
       <MemoryRouter>
         <Authenticated />
       </MemoryRouter>

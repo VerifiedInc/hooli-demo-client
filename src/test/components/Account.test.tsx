@@ -9,7 +9,7 @@ import { dummyDeprecatedDemoPresentationDto } from '../mocks';
 
 describe('Authenticated component', () => {
   const component = (
-    <Provider store={store} >
+    <Provider store={store}>
       <MemoryRouter>
         <Account />
       </MemoryRouter>
