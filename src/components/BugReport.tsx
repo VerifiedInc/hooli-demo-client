@@ -35,7 +35,7 @@ const BugReport: FC = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [email, setEmail] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
     Modal.setAppElement('#root');
@@ -68,7 +68,7 @@ const BugReport: FC = () => {
   const handleClose: MouseEventHandler<HTMLButtonElement> = () => {
     setModalIsOpen(false);
     setIsSubmitted(false);
-    setEmail(''),
+    setEmail('');
     setMessage('');
   };
 
@@ -88,7 +88,7 @@ const BugReport: FC = () => {
                     <button type='button' onClick={handleClose} className='close-button'>Close</button>
                   </div>
                 </>
-              )
+                )
               : (
                 <>
                   <h2 className='bug-report-header'>Report a Bug</h2>
@@ -102,7 +102,7 @@ const BugReport: FC = () => {
                     </div>
                   </form>
                 </>
-              )
+                )
           }
         </div>
       </Modal>

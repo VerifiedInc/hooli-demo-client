@@ -4,7 +4,6 @@ import Header from './Header';
 import HeaderCenter from './HeaderCenter';
 import HeaderLeft from './HeaderLeft';
 import HeaderRight from './HeaderRight';
-import LinkTab from './LinkTab';
 import LightFont from '../Layout/LightFont';
 import Tab from './Tab';
 

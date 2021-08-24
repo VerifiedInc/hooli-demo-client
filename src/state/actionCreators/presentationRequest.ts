@@ -6,7 +6,7 @@ import { PresentationRequestActionType } from '../actionTypes/presentationReques
 import { ResetPresentationRequestStateAction } from '../actions/presentationRequest';
 
 export const createPresentationRequest = (options: DemoPresentationRequestCreateOptions) => {
-  return async (dispatch: Dispatch) => {
+  return async (dispatch: Dispatch): Promise<void> => {
     dispatch({ type: PresentationRequestActionType.CREATE_PRESENTATION_REQUEST });
 
     const service = client.service('presentationRequest');
