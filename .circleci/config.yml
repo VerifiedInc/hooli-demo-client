@@ -196,7 +196,7 @@ workflows:
             - build-and-push-image-sandbox
           context: AWS-Dev
           repo: hooli-demo-client-new
-          deployment: hooli-demo-client-new
+          deployment: hooli-demo-client
           filters:
             tags:
               only: /^v.*/
@@ -235,7 +235,7 @@ workflows:
       - deploy-image:
           context: AWS-Dev
           repo: hooli-demo-client-new
-          deployment: hooli-demo-client-new
+          deployment: hooli-demo-client
           requires:
             - build-and-push-image
           filters:
