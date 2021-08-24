@@ -69,7 +69,7 @@ const BugReport: FC = () => {
     setModalIsOpen(false);
     setIsSubmitted(false);
     setEmail(''),
-      setMessage('');
+    setMessage('');
   };
 
   return (
