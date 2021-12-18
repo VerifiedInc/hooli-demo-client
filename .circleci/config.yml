@@ -4,6 +4,7 @@ orbs:
   aws-cli: circleci/aws-cli@0.1.22
   aws-eks: circleci/aws-eks@0.2.3
   kubernetes: circleci/kubernetes@0.4.0
+  slack: circleci/slack@4.4.2 # ref: https://github.com/CircleCI-Public/slack-orb, https://circleci.com/developer/orbs/orb/circleci/slack#usage-examples
 
 jobs:
   test:
@@ -143,7 +144,24 @@ jobs:
       - run:
           command: |
             kubectl set image deployment/<< parameters.deployment >> << parameters.deployment >>=${AWS_ECR_URL}/<< parameters.repo >>:"dev-${CIRCLE_BRANCH}-${CIRCLE_PREVIOUS_BUILD_NUM}"
-          name: Update container image
+            
+            # Check deployment rollout status every 10 seconds (max 10 minutes) until complete.
+            # ref: https://www.jeffgeerling.com/blog/2018/updating-kubernetes-deployment-and-waiting-it-roll-out-shell-script
+            ATTEMPTS=0
+            ROLLOUT_STATUS_CMD="kubectl rollout status deployment/<< parameters.deployment >>"
+            until $ROLLOUT_STATUS_CMD || [ $ATTEMPTS -eq 60 ]; do
+              $ROLLOUT_STATUS_CMD
+              ATTEMPTS=$((attempts + 1))
+              sleep 10
+            done
+          name: Deploy container image to dev
+      - slack/notify:
+          event: fail
+          mentions: '@devops-team'
+          template: basic_fail_1
+      - slack/notify:
+          event: pass
+          template: basic_success_1
 
   deploy-image-sandbox:
     parameters:
@@ -168,7 +186,24 @@ jobs:
       - run:
           command: |
             kubectl set image deployment/<< parameters.deployment >> << parameters.deployment >>=${AWS_ECR_URL}/<< parameters.repo >>:sandbox-"${CIRCLE_TAG}" -n << parameters.namespace >>
-          name: Update container image
+            
+            # Check deployment rollout status every 10 seconds (max 10 minutes) until complete.
+            # ref: https://www.jeffgeerling.com/blog/2018/updating-kubernetes-deployment-and-waiting-it-roll-out-shell-script
+            ATTEMPTS=0
+            ROLLOUT_STATUS_CMD="kubectl rollout status deployment/<< parameters.deployment >> -n << parameters.namespace >>"
+            until $ROLLOUT_STATUS_CMD || [ $ATTEMPTS -eq 60 ]; do
+              $ROLLOUT_STATUS_CMD
+              ATTEMPTS=$((attempts + 1))
+              sleep 10
+            done
+          name: Deploy container image to sandbox
+      - slack/notify:
+          event: fail
+          mentions: '@devops-team'
+          template: basic_fail_1
+      - slack/notify:
+          event: pass
+          template: success_tagged_deploy_1
 
 workflows:
   build-and-deploy-release:
@@ -194,7 +229,9 @@ workflows:
       - deploy-image-sandbox:
           requires:
             - build-and-push-image-sandbox
-          context: AWS-Dev
+          context:
+            - AWS-Dev
+            - Slack-Context
           repo: hooli-demo-client-new
           deployment: hooli-demo-client
           filters:
@@ -233,7 +270,9 @@ workflows:
                 - test-circleci
 
       - deploy-image:
-          context: AWS-Dev
+          context:
+            - AWS-Dev
+            - Slack-Context
           repo: hooli-demo-client-new
           deployment: hooli-demo-client
           requires:
