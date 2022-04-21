@@ -1,7 +1,9 @@
+import { SaasEnvironment } from '@unumid/web-sdk-react';
+
 interface Config {
   serverUrl: string;
   issuerDid: string;
-  env: string;
+  env: SaasEnvironment;
   webSdkApiKey: string;
   logRocketId: string;
 }
@@ -17,7 +19,7 @@ const {
 export const config: Config = {
   serverUrl: REACT_APP_SERVER_URL,
   issuerDid: REACT_APP_ISSUER_DID,
-  env: REACT_APP_ENV,
+  env: REACT_APP_ENV as SaasEnvironment,
   webSdkApiKey: REACT_APP_WEB_SDK_API_KEY,
   logRocketId: REACT_APP_LOG_ROCKET_ID
 };
