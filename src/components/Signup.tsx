@@ -43,7 +43,7 @@ const Signup: FC = () => {
   const { request } = useTypedSelector(state => state.presentationRequest);
 
   const isMobile = useIsMobile();
-  const actuallyCreatePresentationRequest = () => {
+  const actuallyCreatePresentationRequest = async () => {
     if (!session) return;
 
     // customize these values for the specific demo (or not)
