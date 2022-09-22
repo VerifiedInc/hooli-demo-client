@@ -207,7 +207,7 @@ workflows:
           repo: hooli-demo-client-new
           deployment: hooli-demo-client
           cluster-name: "sandbox-customer-cluster"
-          namespace: "demos"
+          namespace: "default"
           image_tag: "sandbox-${CIRCLE_TAG}"
           slack_pass_notify_template: success_tagged_deploy_1
           filters:
